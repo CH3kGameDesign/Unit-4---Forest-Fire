@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour {
 	void FixedUpdate () {
         //Movement
 
-			Vector3 moveX = -transform.right * Input.GetAxis("Horizontal") * speed;
+		Vector3 moveX = transform.forward * Input.GetAxis("Horizontal") * speed;
 			Vector3 moveZ = Vector3.zero;
 
             //Vector3 moveZ = cameraObject.transform.forward * Input.GetAxis("Vertical") * speed;
