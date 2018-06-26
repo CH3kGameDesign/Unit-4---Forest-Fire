@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour {
 	void FixedUpdate () {
         //Movement
 
-			Vector3 moveX = transform.forward * Input.GetAxis("Horizontal") * speed;
+			Vector3 moveX = -transform.right * Input.GetAxis("Horizontal") * speed;
 			Vector3 moveZ = Vector3.zero;
 
             //Vector3 moveZ = cameraObject.transform.forward * Input.GetAxis("Vertical") * speed;
@@ -46,23 +46,23 @@ public class Movement : MonoBehaviour {
                         
 
             //Raycast If Grounded
-            if (Physics.Raycast((transform.position + new Vector3(0.35f, -0.4f, 0.35f)), -transform.up, distanceOfRay))
+            if (Physics.Raycast((transform.position + new Vector3(0.35f, 0.1f, 0.35f)), -transform.up, distanceOfRay))
             {
                 isGrounded = true;
             }
-            else if (Physics.Raycast((transform.position + new Vector3(-0.35f, -0.4f, 0.35f)), -transform.up, distanceOfRay))
+		else if (Physics.Raycast((transform.position + new Vector3(-0.35f, 0.1f, 0.35f)), -transform.up, distanceOfRay))
             {
                 isGrounded = true;
             }
-            else if (Physics.Raycast((transform.position + new Vector3(-0.35f, -0.4f, -0.35f)), -transform.up, distanceOfRay))
+		else if (Physics.Raycast((transform.position + new Vector3(-0.35f, 0.1f, -0.35f)), -transform.up, distanceOfRay))
             {
                 isGrounded = true;
             }
-            else if (Physics.Raycast((transform.position + new Vector3(0.35f, -0.4f, -0.35f)), -transform.up, distanceOfRay))
+		else if (Physics.Raycast((transform.position + new Vector3(0.35f, 0.1f, -0.35f)), -transform.up, distanceOfRay))
             {
                 isGrounded = true;
             }
-            else if (Physics.Raycast((transform.position + new Vector3(0, -0.4f, 0)), -transform.up, distanceOfRay))
+		else if (Physics.Raycast((transform.position + new Vector3(0, 0.1f, 0)), -transform.up, distanceOfRay))
             {
                 isGrounded = true;
             }
@@ -72,11 +72,11 @@ public class Movement : MonoBehaviour {
             }
 
             //Raycast Lines
-            Debug.DrawLine(transform.position + new Vector3(0, -0.4f, 0), transform.position + new Vector3(0, -1.1f, 0));
-            Debug.DrawLine(transform.position + new Vector3(0.35f, -0.4f, 0.35f), transform.position + new Vector3(0.35f, -1.1f, 0.35f));
-            Debug.DrawLine(transform.position + new Vector3(-0.35f, -0.4f, 0.35f), transform.position + new Vector3(-0.35f, -1.1f, 0.35f));
-            Debug.DrawLine(transform.position + new Vector3(-0.35f, -0.4f, -0.35f), transform.position + new Vector3(-0.35f, -1.1f, -0.35f));
-            Debug.DrawLine(transform.position + new Vector3(0.35f, -0.4f, -0.35f), transform.position + new Vector3(0.35f, -1.1f, -0.35f));
+		Debug.DrawLine(transform.position + new Vector3(0, 0.1f, 0), transform.position + new Vector3(0, -0.1f, 0));
+		Debug.DrawLine(transform.position + new Vector3(0.35f, 0.1f, 0.35f), transform.position + new Vector3(0.35f, -0.1f, 0.35f));
+		Debug.DrawLine(transform.position + new Vector3(-0.35f, 0.1f, 0.35f), transform.position + new Vector3(-0.35f, -0.1f, 0.35f));
+		Debug.DrawLine(transform.position + new Vector3(-0.35f, 0.1f, -0.35f), transform.position + new Vector3(-0.35f, -0.1f, -0.35f));
+		Debug.DrawLine(transform.position + new Vector3(0.35f, 0.1f, -0.35f), transform.position + new Vector3(0.35f, -0.1f, -0.35f));
 
             //Jump
             if (Input.GetKey(KeyCode.Space) && isGrounded)
