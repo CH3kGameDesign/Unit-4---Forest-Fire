@@ -15,6 +15,8 @@ public class Movement : MonoBehaviour {
     public float jumpForce = 10;                    //How Much Force is Applied When Jumping
 	public float speed = 2;                         //Character Speed
 	public float maxspeed = 2;                      //Character MaxSpeed
+
+    public GameObject jumpParticles;                //Particles on Jump
     
 	private float distanceOfRay = 0.2f;             //Raycheck distance for whether can jump
 
@@ -82,10 +84,12 @@ public class Movement : MonoBehaviour {
             if (Input.GetKey(KeyCode.Space) && isGrounded)
             {
                 gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, jumpForce, gameObject.GetComponent<Rigidbody>().velocity.z);
+                Instantiate(jumpParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
             }
             if (Input.GetKey(KeyCode.JoystickButton0) && isGrounded)
             {
                 gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, jumpForce, gameObject.GetComponent<Rigidbody>().velocity.z);
+                Instantiate(jumpParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
             }
         
 	
