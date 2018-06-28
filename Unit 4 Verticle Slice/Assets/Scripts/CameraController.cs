@@ -56,16 +56,16 @@ public class CameraController : MonoBehaviour {
 			pitch = pitchMin;
 		}
 
-		if (yaw > yawOrig + 0.1f) {
+		if (yaw > yawOrig + 10f) {
 			yaw += -0.2f;
 		}
-		if (yaw < yawOrig - 0.1f) {
+		if (yaw < yawOrig - 10f) {
 			yaw += 0.2f;
 		}
-		if (pitch > pitchOrig + 0.1f) {
+		if (pitch > pitchOrig + 5f) {
 			pitch += -0.1f;
 		}
-		if (pitch < pitchOrig - 0.1f) {
+		if (pitch < pitchOrig - 5f) {
 			pitch += 0.1f;
 		}
 

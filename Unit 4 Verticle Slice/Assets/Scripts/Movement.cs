@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour {
 	public float speed = 2;                         //Character Speed
 	public float maxspeed = 2;                      //Character MaxSpeed
 
+    public GameObject model;                        //Player Model
     public GameObject jumpParticles;                //Particles on Jump
     
 	private float distanceOfRay = 0.2f;             //Raycheck distance for whether can jump
@@ -23,6 +24,10 @@ public class Movement : MonoBehaviour {
 	public Rigidbody rb;                            //Rigidbody Reference
 
 	private bool isGrounded;                        //Whether touching Ground or not
+
+    private float lastZPosition;                    //For Change Direction
+
+    private float directionFace;                    //Which Direction Facing, 0 null, 1 right, 2 left
 
 	// Use this for initialization
 	void Start () {
@@ -103,6 +108,25 @@ public class Movement : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
 			Restart ();
 		}
+
+        //directionFace Variable
+        
+        if (lastZPosition + 0.01f < transform.position.z)
+        {
+            directionFace = 1;
+            GetComponent<Animator>().SetBool("Run", true);
+        } else if (lastZPosition - 0.01f > transform.position.z)
+        {
+            directionFace = 2;
+            GetComponent<Animator>().SetBool("Run", true);
+        }
+        else
+        {
+            directionFace = 0;
+            GetComponent<Animator>().SetBool("Run", false);
+        }
+        Debug.Log(lastZPosition - transform.position.z);
+        lastZPosition = transform.position.z;
 	}
 
 
