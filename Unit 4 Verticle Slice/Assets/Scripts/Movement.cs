@@ -18,6 +18,8 @@ public class Movement : MonoBehaviour {
 
     public GameObject model;                        //Player Model
     public GameObject jumpParticles;                //Particles on Jump
+    public GameObject landParticles;                //Particles on Land
+    public GameObject bodyRotate;                   //For Rotating with Movement
     
 	private float distanceOfRay = 0.2f;             //Raycheck distance for whether can jump
 
@@ -26,8 +28,8 @@ public class Movement : MonoBehaviour {
 	private bool isGrounded;                        //Whether touching Ground or not
 
     private float lastZPosition;                    //For Change Direction
-
-    private float directionFace;                    //Which Direction Facing, 0 null, 1 right, 2 left
+    
+    private int jumpTimer;                          //FOR JUMP ANIMATION
 
 	// Use this for initialization
 	void Start () {
@@ -38,40 +40,118 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         //Movement
-
-		Vector3 moveX = transform.forward * Input.GetAxis("Horizontal") * speed;
+        
+		    Vector3 moveX = transform.forward * Input.GetAxis("Horizontal") * speed;
 			Vector3 moveZ = Vector3.zero;
 
-            //Vector3 moveZ = cameraObject.transform.forward * Input.GetAxis("Vertical") * speed;
+        //Vector3 moveZ = cameraObject.transform.forward * Input.GetAxis("Vertical") * speed;
 
-            Vector3 movement = moveX + moveZ;
+        if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
+        {
+            if (isGrounded == true)
+            {
+                if (moveX.z < 0)
+                {
+                    moveX = Vector3.zero;
+                }
+            }
+        }
+        if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run 2"))
+        {
+            if (isGrounded == true)
+            {
+                if (moveX.z > 0)
+                {
+                    moveX = Vector3.zero;
+                }
+            }
+        }
+
+        Vector3 movement = moveX + moveZ;
 
             rb.MovePosition(transform.position + movement);
+        
+        
 
-            
-            //////////////////////////////////////////
-                        
+        //directionFace Variable
 
-            //Raycast If Grounded
-            if (Physics.Raycast((transform.position + new Vector3(0.35f, 0.1f, 0.35f)), -transform.up, distanceOfRay))
+        if (lastZPosition + 0.01f < transform.position.z)
+        {
+            if (moveX.z != 0)
             {
+                GetComponent<Animator>().SetBool("Run", true);
+            }
+
+        }
+        else if (lastZPosition - 0.01f > transform.position.z)
+        {
+            if (moveX.z != 0)
+            {
+                GetComponent<Animator>().SetBool("Run 2", true);
+            }
+
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("Run", false);
+            GetComponent<Animator>().SetBool("Run 2", false);
+        }
+        lastZPosition = transform.position.z;
+
+        if (GetComponent<Animator>().GetBool("Jump") == true)
+        {
+            if (jumpTimer > 5)
+            {
+                GetComponent<Animator>().SetBool("Jump", false);
+            }
+            jumpTimer += 1;
+        }
+        else jumpTimer = 0;
+
+
+        //////////////////////////////////////////
+
+
+        //Raycast If Grounded
+        if (Physics.Raycast((transform.position + new Vector3(0.35f, 0.1f, 0.35f)), -transform.up, distanceOfRay))
+            {
+                if (isGrounded == false)
+                {
+                    Instantiate(landParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                }
                 isGrounded = true;
             }
 		else if (Physics.Raycast((transform.position + new Vector3(-0.35f, 0.1f, 0.35f)), -transform.up, distanceOfRay))
             {
-                isGrounded = true;
+            if (isGrounded == false)
+            {
+                Instantiate(landParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+            }
+            isGrounded = true;
             }
 		else if (Physics.Raycast((transform.position + new Vector3(-0.35f, 0.1f, -0.35f)), -transform.up, distanceOfRay))
             {
-                isGrounded = true;
+            if (isGrounded == false)
+            {
+                Instantiate(landParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+            }
+            isGrounded = true;
             }
 		else if (Physics.Raycast((transform.position + new Vector3(0.35f, 0.1f, -0.35f)), -transform.up, distanceOfRay))
             {
-                isGrounded = true;
+            if (isGrounded == false)
+            {
+                Instantiate(landParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+            }
+            isGrounded = true;
             }
 		else if (Physics.Raycast((transform.position + new Vector3(0, 0.1f, 0)), -transform.up, distanceOfRay))
             {
-                isGrounded = true;
+            if (isGrounded == false)
+            {
+                Instantiate(landParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+            }
+            isGrounded = true;
             }
             else
             {
@@ -90,12 +170,14 @@ public class Movement : MonoBehaviour {
             {
                 gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, jumpForce, gameObject.GetComponent<Rigidbody>().velocity.z);
                 Instantiate(jumpParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-            }
+            GetComponent<Animator>().SetBool("Jump", true);
+        }
             if (Input.GetKey(KeyCode.JoystickButton0) && isGrounded)
             {
                 gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, jumpForce, gameObject.GetComponent<Rigidbody>().velocity.z);
                 Instantiate(jumpParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-            }
+            GetComponent<Animator>().SetBool("Jump", true);
+        }
         
 	
 	}
@@ -109,24 +191,7 @@ public class Movement : MonoBehaviour {
 			Restart ();
 		}
 
-        //directionFace Variable
-        
-        if (lastZPosition + 0.01f < transform.position.z)
-        {
-            directionFace = 1;
-            GetComponent<Animator>().SetBool("Run", true);
-        } else if (lastZPosition - 0.01f > transform.position.z)
-        {
-            directionFace = 2;
-            GetComponent<Animator>().SetBool("Run", true);
-        }
-        else
-        {
-            directionFace = 0;
-            GetComponent<Animator>().SetBool("Run", false);
-        }
-        Debug.Log(lastZPosition - transform.position.z);
-        lastZPosition = transform.position.z;
+       
 	}
 
 

@@ -11,13 +11,15 @@ public class LookAt : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player") {
 			playerLook.GetComponent<LookAtObject> ().lookAt = lookAt;
+            Debug.Log("yep");
 		}
 	}
-
+    
 	void OnTriggerExit(Collider other)
 	{
 		if (other.gameObject.tag == "Player") {
 			playerLook.GetComponent<LookAtObject> ().lookAt = playerLook.GetComponent<LookAtObject> ().lookAtOrigin;
 		}
 	}
+    
 }
