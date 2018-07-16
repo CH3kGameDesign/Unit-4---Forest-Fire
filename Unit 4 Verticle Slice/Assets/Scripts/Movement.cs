@@ -34,6 +34,8 @@ public class Movement : MonoBehaviour {
     private int jumpTimer;                          //FOR JUMP ANIMATION
 	private int glideTimer;							//So you can't glide indefinitely
 
+	public bool canMove = true;						//Whether you're allowed to move
+
 	// Use this for initialization
 	void Start () {
         //Set Variables
@@ -45,7 +47,7 @@ public class Movement : MonoBehaviour {
 	void FixedUpdate () {
         //Movement
 		Vector3 movement = Vector3.zero;
-		if (cameraObject.GetComponent<CameraController> ().mainMenu == false) {
+		if (cameraObject.GetComponent<CameraController> ().mainMenu == false && canMove == true) {
 			movement = transform.forward * Input.GetAxis ("Horizontal") * speed;
 		}
 
@@ -159,7 +161,7 @@ public class Movement : MonoBehaviour {
             {
                 isGrounded = false;
 			//Gliding
-			if (cameraObject.GetComponent<CameraController> ().mainMenu == false) {
+			if (cameraObject.GetComponent<CameraController> ().mainMenu == false && canMove == true) {
 				if (gameObject.GetComponent<Rigidbody> ().velocity.y <= 0) {
 					jumping = false;
 					if (Input.GetKey (KeyCode.Space) || Input.GetKey (KeyCode.JoystickButton0)) {
@@ -182,7 +184,7 @@ public class Movement : MonoBehaviour {
 		Debug.DrawLine(transform.position + new Vector3(0.35f, 0.1f, -0.35f), transform.position + new Vector3(0.35f, -0.1f, -0.35f));
 
             //Jump
-		if (cameraObject.GetComponent<CameraController> ().mainMenu == false) {
+		if (cameraObject.GetComponent<CameraController> ().mainMenu == false && canMove == true) {
 			if (Input.GetKeyDown (KeyCode.Space) && isGrounded) {
 				gameObject.GetComponent<Rigidbody> ().velocity = new Vector3 (gameObject.GetComponent<Rigidbody> ().velocity.x, jumpForce, gameObject.GetComponent<Rigidbody> ().velocity.z);
 				Instantiate (jumpParticles, new Vector3 (transform.position.x, transform.position.y, transform.position.z), transform.rotation);

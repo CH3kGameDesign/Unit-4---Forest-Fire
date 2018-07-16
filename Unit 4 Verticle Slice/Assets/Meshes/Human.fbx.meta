@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: 2f7685678bc14824692e301d120bcaec
+timeCreated: 1531711623
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Arm_L
+    100002: Arm_R
+    100004: Fingers_L
+    100006: Fingers_R
+    100008: Foot_L
+    100010: Foot_R
+    100012: Head
+    100014: //RootNode
+    100016: Legs
+    100018: Neck
+    100020: pCube2
+    100022: pCube2 1
+    100024: pCube3
+    100026: pCube3 1
+    100028: pCube4
+    100030: pCube4 1
+    100032: pCube5
+    100034: pCube5 1
+    100036: pCube6
+    100038: pCube6 1
+    100040: Torso
+    400000: Arm_L
+    400002: Arm_R
+    400004: Fingers_L
+    400006: Fingers_R
+    400008: Foot_L
+    400010: Foot_R
+    400012: Head
+    400014: //RootNode
+    400016: Legs
+    400018: Neck
+    400020: pCube2
+    400022: pCube2 1
+    400024: pCube3
+    400026: pCube3 1
+    400028: pCube4
+    400030: pCube4 1
+    400032: pCube5
+    400034: pCube5 1
+    400036: pCube6
+    400038: pCube6 1
+    400040: Torso
+    2100000: lambert1
+    2300000: Arm_L
+    2300002: Arm_R
+    2300004: Foot_L
+    2300006: Foot_R
+    2300008: Head
+    2300010: Legs
+    2300012: Neck
+    2300014: pCube2
+    2300016: pCube2 1
+    2300018: pCube3
+    2300020: pCube3 1
+    2300022: pCube4
+    2300024: pCube4 1
+    2300026: pCube5
+    2300028: pCube5 1
+    2300030: pCube6
+    2300032: pCube6 1
+    2300034: Torso
+    3300000: Arm_L
+    3300002: Arm_R
+    3300004: Foot_L
+    3300006: Foot_R
+    3300008: Head
+    3300010: Legs
+    3300012: Neck
+    3300014: pCube2
+    3300016: pCube2 1
+    3300018: pCube3
+    3300020: pCube3 1
+    3300022: pCube4
+    3300024: pCube4 1
+    3300026: pCube5
+    3300028: pCube5 1
+    3300030: pCube6
+    3300032: pCube6 1
+    3300034: Torso
+    4300000: Torso
+    4300002: Neck
+    4300004: Head
+    4300006: Arm_L
+    4300008: pCube2
+    4300010: pCube3
+    4300012: pCube4
+    4300014: pCube5
+    4300016: pCube6
+    4300018: Arm_R
+    4300020: pCube2
+    4300022: pCube3
+    4300024: pCube4
+    4300026: pCube5
+    4300028: pCube6
+    4300030: Legs
+    4300032: Foot_L
+    4300034: Foot_R
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
