@@ -27,49 +27,58 @@ public class CameraController : MonoBehaviour {
 	public float pitchMax = 60;
 	public float pitchMin = -120;
 
+	public GameObject cameraHook;
+	public bool mainMenu = true;
+
 	void Start () {
 		//Set Cursor to be locked to window
-		Cursor.lockState = CursorLockMode.Locked;
-		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Confined;
+		Cursor.visible = true;
 		yawOrig = yaw;
 		pitchOrig = pitch;
 	}
 
 
 	void Update () {
-		//Camera Movement
-		yaw += hcamspeed * Input.GetAxis ("Mouse X");
-		pitch -= vcamspeed * Input.GetAxis ("Mouse Y");
+		if (mainMenu == false) {
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+			transform.position = cameraHook.transform.position;
 
-		//Ensure Yaw doesn't exceed constraints
-		if (yaw > yawMax) {
-			yaw = yawMax;
-		}
-		if (yaw < yawMin) {
-			yaw = yawMin;
-		}
-        //Ensure Pitch doesn't exceed constraints
-		if (pitch > pitchMax) {
-			pitch = pitchMax;
-		}
-		if (pitch < pitchMin) {
-			pitch = pitchMin;
-		}
+			//Camera Movement
+			yaw += hcamspeed * Input.GetAxis ("Mouse X");
+			pitch -= vcamspeed * Input.GetAxis ("Mouse Y");
 
-		if (yaw > yawOrig + 10f) {
-			yaw += -0.2f;
-		}
-		if (yaw < yawOrig - 10f) {
-			yaw += 0.2f;
-		}
-		if (pitch > pitchOrig + 5f) {
-			pitch += -0.1f;
-		}
-		if (pitch < pitchOrig - 5f) {
-			pitch += 0.1f;
-		}
+			//Ensure Yaw doesn't exceed constraints
+			if (yaw > yawMax) {
+				yaw = yawMax;
+			}
+			if (yaw < yawMin) {
+				yaw = yawMin;
+			}
+			//Ensure Pitch doesn't exceed constraints
+			if (pitch > pitchMax) {
+				pitch = pitchMax;
+			}
+			if (pitch < pitchMin) {
+				pitch = pitchMin;
+			}
 
-        //Actually Move Camera
-		transform.eulerAngles = new Vector3 (pitch, yaw, 0.0f);
+			if (yaw > yawOrig + 10f) {
+				yaw += -0.2f;
+			}
+			if (yaw < yawOrig - 10f) {
+				yaw += 0.2f;
+			}
+			if (pitch > pitchOrig + 5f) {
+				pitch += -0.1f;
+			}
+			if (pitch < pitchOrig - 5f) {
+				pitch += 0.1f;
+			}
+
+			//Actually Move Camera
+			transform.eulerAngles = new Vector3 (pitch, yaw, 0.0f);
+		}
 	}
 }
