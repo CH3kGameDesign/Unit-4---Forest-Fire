@@ -11,6 +11,15 @@ public class AnimationTrigger : MonoBehaviour {
          if (other.tag == "Player")
         {
             other.GetComponent<Animator>().Play(animationName);
+            other.GetComponent<Movement>().canMove = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            other.GetComponent<Movement>().canMove = true;
         }
     }
 }

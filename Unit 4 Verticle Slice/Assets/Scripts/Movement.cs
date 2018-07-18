@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour {
     public GameObject model;                        //Player Model
     public GameObject jumpParticles;                //Particles on Jump
     public GameObject landParticles;                //Particles on Land
+    public GameObject glideParticles;               //Particles whilst Gliding
     public GameObject bodyRotate;                   //For Rotating with Movement
     
 	private float distanceOfRay = 0.2f;             //Raycheck distance for whether can jump
@@ -169,7 +170,8 @@ public class Movement : MonoBehaviour {
 							if (gameObject.GetComponent<Rigidbody> ().velocity.y < -0.5f) {
 								gameObject.GetComponent<Rigidbody> ().velocity = new Vector3 (gameObject.GetComponent<Rigidbody> ().velocity.x, -0.5f, gameObject.GetComponent<Rigidbody> ().velocity.z);
 								glideTimer++;
-							}
+                                Instantiate (glideParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                            }
 						}
 					}
 				}
