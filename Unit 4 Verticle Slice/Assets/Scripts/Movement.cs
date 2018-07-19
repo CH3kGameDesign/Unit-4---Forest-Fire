@@ -37,8 +37,13 @@ public class Movement : MonoBehaviour {
 
 	public bool canMove = true;						//Whether you're allowed to move
 
-	// Use this for initialization
-	void Start () {
+    public AudioSource runAudio;                    //Run Sound
+    public AudioSource jumpAudio;                   //Jump Sound
+    public AudioSource landAudio;                   //Land Sound
+    public AudioSource slideAudio;                  //Slide Sound
+
+    // Use this for initialization
+    void Start () {
         //Set Variables
 		rb = GetComponent<Rigidbody> ();
 		jumping = false;
@@ -56,16 +61,35 @@ public class Movement : MonoBehaviour {
 				if (isGrounded == true) {
 					if (movement.z < 0) {
 						movement = Vector3.zero;
-					}
+                    runAudio.enabled = false;
+                } else
+                    { 
+                        runAudio.enabled = true;
+                    }
 				}
-			}
+            else
+            {
+                runAudio.enabled = false;
+            }
+        } else
 			if (GetComponent<Animator> ().GetCurrentAnimatorStateInfo (0).IsName ("Run 2")) {
 				if (isGrounded == true) {
 					if (movement.z > 0) {
 						movement = Vector3.zero;
-					}
-				}
-			}
+                    runAudio.enabled = false;
+                } else
+                {
+                    runAudio.enabled = true;
+                }
+            }
+            else
+            {
+                runAudio.enabled = false;
+            }
+        } else
+        {
+            runAudio.enabled = false;
+        }
 
 		if (jumping == false) {
 			rb.MovePosition (transform.position + movement);
@@ -118,6 +142,7 @@ public class Movement : MonoBehaviour {
                 if (isGrounded == false)
                 {
                     Instantiate(landParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                landAudio.Play();
                 }
                 isGrounded = true;
 			glideTimer = 0;
@@ -127,6 +152,7 @@ public class Movement : MonoBehaviour {
             if (isGrounded == false)
             {
                 Instantiate(landParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                landAudio.Play();
             }
             isGrounded = true;
 			glideTimer = 0;
@@ -136,6 +162,7 @@ public class Movement : MonoBehaviour {
             if (isGrounded == false)
             {
                 Instantiate(landParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                landAudio.Play();
             }
             isGrounded = true;
 			glideTimer = 0;
@@ -145,6 +172,7 @@ public class Movement : MonoBehaviour {
             if (isGrounded == false)
             {
                 Instantiate(landParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                landAudio.Play();
             }
             isGrounded = true;
 			glideTimer = 0;
@@ -154,6 +182,7 @@ public class Movement : MonoBehaviour {
             if (isGrounded == false)
             {
                 Instantiate(landParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                landAudio.Play();
             }
             isGrounded = true;
 			glideTimer = 0;
@@ -161,8 +190,8 @@ public class Movement : MonoBehaviour {
             else
             {
                 isGrounded = false;
-			//Gliding
-			if (cameraObject.GetComponent<CameraController> ().mainMenu == false && canMove == true) {
+            //Gliding
+            if (cameraObject.GetComponent<CameraController> ().mainMenu == false && canMove == true) {
 				if (gameObject.GetComponent<Rigidbody> ().velocity.y <= 0) {
 					jumping = false;
 					if (Input.GetKey (KeyCode.Space) || Input.GetKey (KeyCode.JoystickButton0)) {
@@ -191,18 +220,27 @@ public class Movement : MonoBehaviour {
 				gameObject.GetComponent<Rigidbody> ().velocity = new Vector3 (gameObject.GetComponent<Rigidbody> ().velocity.x, jumpForce, gameObject.GetComponent<Rigidbody> ().velocity.z);
 				Instantiate (jumpParticles, new Vector3 (transform.position.x, transform.position.y, transform.position.z), transform.rotation);
 				GetComponent<Animator> ().SetBool ("Jump", true);
+                jumpAudio.Play();
 				jumping = true;
 			}
 			if (Input.GetKeyDown (KeyCode.JoystickButton0) && isGrounded) {
 				gameObject.GetComponent<Rigidbody> ().velocity = new Vector3 (gameObject.GetComponent<Rigidbody> ().velocity.x, jumpForce, gameObject.GetComponent<Rigidbody> ().velocity.z);
 				Instantiate (jumpParticles, new Vector3 (transform.position.x, transform.position.y, transform.position.z), transform.rotation);
 				GetComponent<Animator> ().SetBool ("Jump", true);
-				jumping = true;
+                jumpAudio.Play();
+                jumping = true;
 			}
 		}
+
+        if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Slide") || GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Slide 2"))
+        {
+            slideAudio.enabled = true;
+        } else
+        {
+            slideAudio.enabled = false;
+        }
         
-	
-	}
+    }
 
 	void Update () {
 		//Respawn Input
