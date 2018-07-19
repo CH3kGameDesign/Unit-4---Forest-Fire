@@ -48,6 +48,10 @@ ModelImporter:
     400038: pCube6 1
     400040: Torso
     2100000: lambert1
+    2100002: blinn8
+    2100004: blinn10
+    2100006: blinn9
+    2100008: blinn11
     2300000: Arm_L
     2300002: Arm_R
     2300004: Foot_L
