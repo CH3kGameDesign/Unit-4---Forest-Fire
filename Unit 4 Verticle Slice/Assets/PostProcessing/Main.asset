@@ -71,7 +71,7 @@ MonoBehaviour:
   depthOfField:
     m_Enabled: 1
     m_Settings:
-      focusDistance: 5.9327946
+      focusDistance: 5.9017544
       aperture: 8.3
       focalLength: 117
       useCameraFov: 0

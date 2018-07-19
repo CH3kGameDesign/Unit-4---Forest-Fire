@@ -16,16 +16,20 @@ public class CameraController : MonoBehaviour {
 	//public so you can rotate player start rotation
 	public float yaw = 0;
 	public float pitch = 0;
-	private float yawOrig;
-	private float pitchOrig;
+	public float yawOrig;
+	public float pitchOrig;
 
 	//Maximum yaw Rotations
 	public float yawMax = 60;
 	public float yawMin = -120;
 
+    public float yawZoom = 2;
+
     //Maximum pitch Rotations
 	public float pitchMax = 60;
 	public float pitchMin = -120;
+
+    public float pitchZoom = 2;
 
 	public GameObject cameraHook;
 	public bool mainMenu = true;
@@ -35,12 +39,13 @@ public class CameraController : MonoBehaviour {
 		Cursor.lockState = CursorLockMode.Confined;
 		Cursor.visible = true;
 		yawOrig = yaw;
-		pitchOrig = pitch;
+        pitchOrig = pitch;
 	}
 
 
 	void Update () {
 		if (mainMenu == false) {
+            float zoomReal = GetComponent<CameraFocus>().myCamera.fieldOfView;
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
 			transform.position = cameraHook.transform.position;
@@ -50,18 +55,18 @@ public class CameraController : MonoBehaviour {
 			pitch -= vcamspeed * Input.GetAxis ("Mouse Y");
 
 			//Ensure Yaw doesn't exceed constraints
-			if (yaw > yawMax) {
-				yaw = yawMax;
+			if (yaw > (yawMax + (((zoomReal - 60) * -1) * yawZoom))) {
+				yaw = yawMax + (((zoomReal - 60) * -1) * yawZoom);
 			}
-			if (yaw < yawMin) {
-				yaw = yawMin;
+			if (yaw < (yawMin - (((zoomReal - 60) * -1) * yawZoom))) {
+				yaw = yawMin - (((zoomReal - 60) * -1) * yawZoom);
 			}
 			//Ensure Pitch doesn't exceed constraints
-			if (pitch > pitchMax) {
-				pitch = pitchMax;
+			if (pitch > (pitchMax + (((zoomReal - 60) * -1) * pitchZoom))) {
+				pitch = pitchMax + (((zoomReal - 60) * -1) * pitchZoom);
 			}
-			if (pitch < pitchMin) {
-				pitch = pitchMin;
+			if (pitch < (pitchMin - (((zoomReal - 60) * -1) * pitchZoom))) {
+				pitch = pitchMin - (((zoomReal - 60) * -1) * pitchZoom);
 			}
 
 			if (yaw > yawOrig + 10f) {

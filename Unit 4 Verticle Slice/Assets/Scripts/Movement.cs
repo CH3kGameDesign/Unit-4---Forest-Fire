@@ -91,9 +91,9 @@ public class Movement : MonoBehaviour {
             runAudio.enabled = false;
         }
 
-		if (jumping == false) {
-			rb.MovePosition (transform.position + movement);
-		}
+		
+		rb.MovePosition (transform.position + movement);
+		
 
         
 

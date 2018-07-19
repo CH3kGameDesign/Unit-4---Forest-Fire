@@ -14,20 +14,20 @@ public class CameraFocus : MonoBehaviour {
     public float DOFSpeed;
 
     private float defaultZoom;
-    private float targetZoom;
+    public float targetZoom;
     private float defaultDOF;
     private float targetDOF;
 
     void Start()
     {
         defaultZoom = myCamera.fieldOfView;
-        defaultDOF = myCamera.GetComponent<PostProcessingBehaviour>().profile.depthOfField.settings.focusDistance;
+        defaultDOF = 5.9f;
         camFocusProfile = myCamera.GetComponent<PostProcessingBehaviour>().profile;
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) || Input.GetAxis("Controller Triggers") != 0)
         {
             targetZoom = maxZoom;
             targetDOF = maxDOF;
