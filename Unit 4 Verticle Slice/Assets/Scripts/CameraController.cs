@@ -69,18 +69,25 @@ public class CameraController : MonoBehaviour {
 				pitch = pitchMin - (((zoomReal - 60) * -1) * pitchZoom);
 			}
 
-			if (yaw > yawOrig + 10f) {
-				yaw += -0.2f;
-			}
-			if (yaw < yawOrig - 10f) {
-				yaw += 0.2f;
-			}
-			if (pitch > pitchOrig + 5f) {
-				pitch += -0.1f;
-			}
-			if (pitch < pitchOrig - 5f) {
-				pitch += 0.1f;
-			}
+            if (GetComponent<CameraFocus>().targetZoom > 59)
+            {
+                if (yaw > yawOrig + 10f)
+                {
+                    yaw += -0.2f;
+                }
+                if (yaw < yawOrig - 10f)
+                {
+                    yaw += 0.2f;
+                }
+                if (pitch > pitchOrig + 5f)
+                {
+                    pitch += -0.1f;
+                }
+                if (pitch < pitchOrig - 5f)
+                {
+                    pitch += 0.1f;
+                }
+            }
 
 			//Actually Move Camera
 			transform.eulerAngles = new Vector3 (pitch, yaw, 0.0f);

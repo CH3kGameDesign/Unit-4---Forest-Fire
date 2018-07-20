@@ -13,7 +13,7 @@ public class LookAtOrigin : MonoBehaviour {
     public Camera mainCamera;
 
 	void Start () {
-        origPos = transform.position;
+        origPos = transform.localPosition;
 		//target = maxHeight;
 	}
 	// Update is called once per frame
@@ -39,7 +39,7 @@ public class LookAtOrigin : MonoBehaviour {
             pitch = pitch - pitchOrig;
         }
 
-        transform.position = new Vector3(transform.position.x, origPos.y - pitch, transform.position.z);
+        transform.localPosition = new Vector3(transform.localPosition.x, origPos.y - pitch, transform.localPosition.z);
 
         
         /*
