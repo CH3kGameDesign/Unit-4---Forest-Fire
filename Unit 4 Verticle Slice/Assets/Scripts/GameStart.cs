@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameStart : MonoBehaviour {
 
 	public GameObject Camera;
+	public GameObject Ramp;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +16,7 @@ public class GameStart : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player") {
 			Camera.GetComponent<CameraController> ().mainMenu = false;
+			Ramp.SetActive (false);
 		}
 	}
 }
