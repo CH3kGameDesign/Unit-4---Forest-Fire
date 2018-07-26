@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4572244601281498}
   - component: {fileID: 198750447354452036}
   - component: {fileID: 199538649970636016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GlideParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114865533931257732}
   - component: {fileID: 114746588189135544}
   - component: {fileID: 114113112151416076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1073,7 +1073,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 0.6985294, b: 0.6985294, a: 1}
-        key1: {r: 1, g: 0, b: 0, a: 0.5176471}
+        key1: {r: 0.78676474, g: 0.5380082, b: 0.5380082, a: 0.6431373}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2576,7 +2576,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2657,7 +2657,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 0.4
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294967295

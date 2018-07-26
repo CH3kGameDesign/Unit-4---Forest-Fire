@@ -143,7 +143,7 @@ public class Movement : MonoBehaviour {
                 {
                     Instantiate(landParticles, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
                 landAudio.Play();
-                }
+            }
                 isGrounded = true;
 			glideTimer = 0;
             }
@@ -250,8 +250,6 @@ public class Movement : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
 			Restart ();
 		}
-
-       
 	}
 
 

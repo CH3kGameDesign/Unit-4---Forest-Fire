@@ -30,9 +30,9 @@ public class CameraController : MonoBehaviour {
 	public float pitchMin = -120;
 
     public float pitchZoom = 2;
-
-	public GameObject cameraHook;
+    
 	public bool mainMenu = true;
+    
 
 	void Start () {
 		//Set Cursor to be locked to window
@@ -48,7 +48,6 @@ public class CameraController : MonoBehaviour {
             float zoomReal = GetComponent<CameraFocus>().myCamera.fieldOfView;
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
-			transform.position = cameraHook.transform.position;
 
 			//Camera Movement
 			yaw += hcamspeed * Input.GetAxis ("Mouse X");
@@ -91,6 +90,7 @@ public class CameraController : MonoBehaviour {
 
 			//Actually Move Camera
 			transform.eulerAngles = new Vector3 (pitch, yaw, 0.0f);
-		}
-	}
+        }
+        
+    }
 }
