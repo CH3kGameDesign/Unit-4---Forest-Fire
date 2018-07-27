@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class FailState : MonoBehaviour {
 
 	public GameObject human;
+    public GameObject player;
+
+    public AudioSource boom;
 
 	// Use this for initialization
 	void Start () {
@@ -17,13 +20,16 @@ public class FailState : MonoBehaviour {
 		if (player.tag == "Player") {
 			human.GetComponent<Animator> ().Play ("HumanFall");
 			player.GetComponent<Animator> ().Play ("Slide");
-			player.GetComponent<Movement> ().canMove = false;
+            player.GetComponent<Movement>().canMove = false;
 			Invoke ("startCredits", 0.668f);
 		}
 	}
 
 	public void startCredits() {
 		Debug.Log ("DOOOOONE");
+        boom.Play();
+        player.GetComponent<Movement>().slideAudio.Pause();
+        player.GetComponent<Movement>().enabled = false;
         SceneManager.LoadScene(1);
 	}
 }

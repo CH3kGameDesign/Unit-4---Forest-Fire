@@ -41,12 +41,17 @@ public class Movement : MonoBehaviour {
     public AudioSource jumpAudio;                   //Jump Sound
     public AudioSource landAudio;                   //Land Sound
     public AudioSource slideAudio;                  //Slide Sound
+    public AudioSource boomAudio;                   //Boom Sound
+
+    public GameObject FailState;
 
     // Use this for initialization
     void Start () {
         //Set Variables
 		rb = GetComponent<Rigidbody> ();
 		jumping = false;
+        DontDestroyOnLoad(this.gameObject);
+        FailState.GetComponent<FailState>().boom = boomAudio;
 	}
 
 	// Update is called once per frame
@@ -256,5 +261,6 @@ public class Movement : MonoBehaviour {
     //Respawn
 	void Restart () {
 		SceneManager.LoadScene (0);
-	}
+        Destroy(this.gameObject);
+    }
 }
