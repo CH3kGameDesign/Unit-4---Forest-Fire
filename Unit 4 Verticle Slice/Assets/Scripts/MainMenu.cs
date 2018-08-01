@@ -6,11 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-	public GameObject player;
-	public GameObject mainMenu;
-    public Image start;
+    /*
+     Is responsible for:
+     - Using Main Menu
+     */
 
-    private bool fade = false;
+    public GameObject player;                       //Player Controlled Character
+	public GameObject mainMenu;                     //All the Main Menu UI Elements
+    public Image start;                             //Any UI Element
+
+    private bool fade = false;                      //Whether to Fade
 
 	// Use this for initialization
 	void Start () {

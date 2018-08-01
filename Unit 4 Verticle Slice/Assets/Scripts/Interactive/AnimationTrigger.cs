@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class AnimationTrigger : MonoBehaviour {
 
-    public string animationName;
+    /*
+     Is responsible for:
+     - Forcing Animation At Trigger Point
+     */
+
+    public string animationName;        //Which Animation
 
     private void OnTriggerStay(Collider other)
     {

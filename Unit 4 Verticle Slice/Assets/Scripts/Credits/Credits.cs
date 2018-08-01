@@ -4,10 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Credits : MonoBehaviour {
-    	
 
-	// Update is called once per frame
-	void Update () {
+    /*
+     Is responsible for:
+     - Setting Up Credits
+     - Closing Credits
+     */
+
+    // Update is called once per frame
+    void Update () {
         Cursor.visible = false;
         if (Input.anyKey)
         {

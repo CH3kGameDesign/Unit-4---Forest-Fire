@@ -6,8 +6,7 @@ public class CameraController : MonoBehaviour {
 
     /*
     WHAT SCRIPT DOES:
-    -   Move Camera
-    -   Hide Cursor
+    -   Rotate Camera
     */
 
     public float hcamspeed = 2;         //Speed Rotating Horizontally
@@ -35,8 +34,6 @@ public class CameraController : MonoBehaviour {
     
 
 	void Start () {
-		//Set Cursor to be locked to window
-		
 		yawOrig = yaw;
         pitchOrig = pitch;
 	}

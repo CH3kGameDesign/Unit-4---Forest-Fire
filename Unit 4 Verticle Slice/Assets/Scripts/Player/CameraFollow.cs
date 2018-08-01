@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
-    public GameObject cameraHook;
+    /*
+     Is responsible for:
+     - Making The Camera Follow the Player
+     */
+
+    public GameObject cameraHook;           //Where To Follow
 
     private void Start()
     {

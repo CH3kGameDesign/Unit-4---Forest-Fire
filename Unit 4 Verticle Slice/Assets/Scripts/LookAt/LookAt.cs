@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class LookAt : MonoBehaviour {
 
-	public GameObject playerLook;
-	public GameObject lookAt;
+    /*
+     Is responsible for:
+     - Look at Objects In Distance when Player Enters Trigger
+     */
+
+    public GameObject playerLook;           //Look at GameObject
+	public GameObject lookAt;               //Where To Look
 	
 	void OnTriggerEnter(Collider other)
 	{

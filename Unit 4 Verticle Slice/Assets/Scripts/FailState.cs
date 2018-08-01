@@ -5,10 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class FailState : MonoBehaviour {
 
-	public GameObject human;
-    public GameObject player;
+    /*
+     Is responsible for:
+     - Ending the game
+     - Loading The Credits
+     - Making Human Fall
+     */ 
 
-    public AudioSource boom;
+
+	public GameObject human;                    //Model of the Human
+    public GameObject player;                   //Player Controlled Character
+
+    public AudioSource boom;                    //Boom SFX
 
 	// Use this for initialization
 	void Start () {

@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour {
     -   Moves Player
     -   Jump
     -   Restarts
+    -   Play SFX
     */
 
     public float jumpForce = 10;                    //How Much Force is Applied When Jumping
@@ -25,7 +26,7 @@ public class Movement : MonoBehaviour {
 	private float distanceOfRay = 0.2f;             //Raycheck distance for whether can jump
 
 	public Rigidbody rb;                            //Rigidbody Reference
-	public GameObject cameraObject;
+	public GameObject cameraObject;                 //The Camera Object
 
 	private bool isGrounded;                        //Whether touching Ground or not
 	private bool jumping;							//Whether Jumping Up
@@ -43,7 +44,7 @@ public class Movement : MonoBehaviour {
     public AudioSource slideAudio;                  //Slide Sound
     public AudioSource boomAudio;                   //Boom Sound
 
-    public GameObject FailState;
+    public GameObject FailState;                    //GameOver Trigger Box
 
     // Use this for initialization
     void Start () {

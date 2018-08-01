@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class LookAtObject : MonoBehaviour {
 
-	public GameObject lookAt;
-	public GameObject lookAtOrigin;
+    /*
+     Is responsible for:
+     - Where The Player Looks
+     - Moving where the Player Looks
+     */
 
-	public float speed;
+    public GameObject lookAt;               //Where To Move To
+	public GameObject lookAtOrigin;         //Original Position
 
-	// Update is called once per frame
+	public float speed;                     //How Fast To Move
+
 	void Start () {
 		lookAt = lookAtOrigin;
 	}

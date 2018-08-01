@@ -4,15 +4,22 @@ using UnityEngine;
 using UnityEngine.PostProcessing;
 
 public class CameraFocus : MonoBehaviour {
-	
-	private bool focus = false;
-    public Camera myCamera;
-	public PostProcessingProfile camFocusProfile;
-    public float maxZoom;
-    public float zoomSpeed;
-    public float maxDOF;
-    public float DOFSpeed;
 
+    /*
+     Is responsible for:
+     - Zooming In the Camera
+     */
+
+    private bool focus = false;                         //Zoom in or not
+    public Camera myCamera;                             //Main Camera Object
+	public PostProcessingProfile camFocusProfile;       //Camera's Post Processing Profile
+
+    public float maxZoom;                               //Max Zoom It Can Zoom
+    public float zoomSpeed;                             //Speed of the zoom
+    public float maxDOF;                                //Max Depth of Field
+    public float DOFSpeed;                              //Speed of Depth of Field
+
+    //Original and Current Floats
     private float defaultZoom;
     public float targetZoom;
     private float defaultDOF;
@@ -44,28 +51,4 @@ public class CameraFocus : MonoBehaviour {
 
         camFocusProfile.depthOfField.settings = dof;
     }
-
-    /*
-	// Update is called once per frame
-	void Update () {
-		camFocusProfile = camera.GetComponent<PostProcessingBehaviour> ().profile;
-
-		if (focus == true) {
-			if (camera.GetComponent<PostProcessingBehaviour> ().profile.depthOfField.settings.focusDistance < 9)
-				camFocusProfile.depthOfField.settings.focusDistance += 0.1f;
-		} else {
-			if (camera.GetComponent<PostProcessingBehaviour> ().profile.depthOfField.settings.focusDistance > 5.9f)
-				camFocusProfile.depthOfField.settings.focusDistance -= 0.1f;
-		}
-		camera.GetComponent<PostProcessingBehaviour> ().profile = camFocusProfile;
-	}
-
-	void OnTriggerEnter () {
-		focus = true;
-	}
-
-	void OnTriggerExit () {
-		focus = false;
-	}
-	*/
 }

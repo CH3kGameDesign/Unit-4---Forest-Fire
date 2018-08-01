@@ -5,8 +5,13 @@ using UnityEngine.UI;
 
 public class CreditsFade : MonoBehaviour {
 
-    public int fadeOut = 0;
-    public Image blackness;
+    /*
+     Is responsible for:
+     - Fading In From Black
+     */
+
+    public int fadeOut = 0;         //Pause before fadeIn
+    public Image blackness;         //The Dark Image UI Element
 
 	// Use this for initialization
 	void Start () {

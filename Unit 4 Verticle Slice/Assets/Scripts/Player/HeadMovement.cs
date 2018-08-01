@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class HeadMovement : MonoBehaviour {
 
-	public GameObject lookAt;
-    public GameObject headTransform;
+    /*
+     Is responsible for:
+     - Actually Move the Head
+     - Make Sure Head Stays On Body
+     */
+
+    public GameObject lookAt;               //Where To Look
+    public GameObject headTransform;        //Where the Head should be
 
 	// Update is called once per frame
 	void Update () {
