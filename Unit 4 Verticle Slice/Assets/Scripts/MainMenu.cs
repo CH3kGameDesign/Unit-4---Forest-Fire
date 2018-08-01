@@ -14,8 +14,9 @@ public class MainMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
 
     void Update()
     {
@@ -27,6 +28,7 @@ public class MainMenu : MonoBehaviour {
     public void gameStart () {
 
 		player.SetActive (true);
+        Cursor.visible = false;
         fade = true;
 	}
 

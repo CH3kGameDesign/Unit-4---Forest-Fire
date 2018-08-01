@@ -8,9 +8,11 @@ public class Credits : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.anyKey)
+        Cursor.visible = false;
+        if (Input.anyKey)
         {
-            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             Destroy(GameObject.FindGameObjectWithTag("Player"));
             SceneManager.LoadScene(0);
         }

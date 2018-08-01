@@ -21,13 +21,14 @@ public class FailState : MonoBehaviour {
 			human.GetComponent<Animator> ().Play ("HumanFall");
 			player.GetComponent<Animator> ().Play ("Slide");
             player.GetComponent<Movement>().canMove = false;
-			Invoke ("startCredits", 0.668f);
+            boom.Play();
+            Invoke ("startCredits", 1f);
 		}
 	}
+    
 
 	public void startCredits() {
 		Debug.Log ("DOOOOONE");
-        boom.Play();
         player.GetComponent<Movement>().slideAudio.Pause();
         player.GetComponent<Movement>().enabled = false;
         SceneManager.LoadScene(1);

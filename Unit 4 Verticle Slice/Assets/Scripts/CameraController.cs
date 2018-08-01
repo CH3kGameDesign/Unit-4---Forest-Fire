@@ -36,8 +36,7 @@ public class CameraController : MonoBehaviour {
 
 	void Start () {
 		//Set Cursor to be locked to window
-		Cursor.lockState = CursorLockMode.Confined;
-		Cursor.visible = true;
+		
 		yawOrig = yaw;
         pitchOrig = pitch;
 	}
@@ -46,8 +45,6 @@ public class CameraController : MonoBehaviour {
 	void Update () {
 		if (mainMenu == false) {
             float zoomReal = GetComponent<CameraFocus>().myCamera.fieldOfView;
-			Cursor.lockState = CursorLockMode.Locked;
-			Cursor.visible = false;
 
 			//Camera Movement
 			yaw += hcamspeed * Input.GetAxis ("Mouse X");
